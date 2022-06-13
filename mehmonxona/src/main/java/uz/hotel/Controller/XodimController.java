@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import uz.hotel.entity.Xodim;
 import uz.hotel.service.XodimService;
 
-import java.util.List;
-
 @RestController
 @CrossOrigin(maxAge = 3600)
 @RequestMapping("/api/xodim")
@@ -23,9 +21,9 @@ public class XodimController {
     Logger logger= (Logger) LoggerFactory.getLogger(XodimController.class.getName());
 
     @GetMapping()
-    public ResponseEntity<List<Xodim>> getAll(Pageable pageable){
+    public ResponseEntity<Page<Xodim>> getAll(Pageable pageable){
 
-        return ResponseEntity.ok(xs.getAll(pageable).getContent());
+        return ResponseEntity.ok(xs.getAll(pageable));
     }
 
     @GetMapping("/{id}")

@@ -1,9 +1,17 @@
 package uz.hotel.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 @Entity
 @Table(name = "buyurtma")
 public class Buyurtma implements Serializable {
@@ -14,15 +22,26 @@ public class Buyurtma implements Serializable {
     private Mijoz mijoz;
     @ManyToOne
     private Xona xona;
+    @JsonFormat(pattern = "yyyy-MM-dd  HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd  HH:mm:ss")
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime buyurtmaYaratilganVaqt;
+    @JsonFormat(pattern = "yyyy-MM-dd  HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd  HH:mm:ss")
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime buyurtmaYopilganVaqt;
     @ManyToOne
     private Xodim xodim;
-    private LocalDateTime buyurtmaYopilganVaqt;
+    
 
     public Buyurtma() {
     }
 
-    public Buyurtma(Long id, Mijoz mijoz, Xona xona, LocalDateTime buyurtmaYaratilganVaqt, Xodim xodim, LocalDateTime buyurtmaYopilganVaqt) {
+    public Buyurtma(Long id, Mijoz mijoz, Xona xona,
+                    LocalDateTime buyurtmaYaratilganVaqt, 
+                    Xodim xodim, LocalDateTime buyurtmaYopilganVaqt) {
         this.id = id;
         this.mijoz = mijoz;
         this.xona = xona;

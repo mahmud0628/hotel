@@ -9,4 +9,4 @@ public class MehmonxonaApplication {
     public static void main(String[] args) {
         SpringApplication.run(MehmonxonaApplication.class,args); }
 
-}
+} 

@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 import uz.hotel.entity.Tulov;
 import uz.hotel.repository.TulovRepository;
 import uz.hotel.service.TulovService;
+
 @Service
 public class TulovServiceImpl implements TulovService {
 
     @Autowired
     TulovRepository tr;
-
 
     @Override
     public Page<Tulov> getAll(Pageable pageable) {
@@ -26,10 +26,10 @@ public class TulovServiceImpl implements TulovService {
 
     @Override
     public Tulov create(Tulov data) throws Exception {
-        if (data.getId()!=null)
-            try{
+        if (data.getId() == null)
+            try {
                 return tr.save(data);
-            }catch (Exception ex){
+            } catch (Exception ex) {
                 System.out.printf("xatolik: yangilashda muommo bor!");
             }
         throw new Exception("id null ga teng bulmasligi kerak");
@@ -37,11 +37,10 @@ public class TulovServiceImpl implements TulovService {
 
     @Override
     public Tulov update(Tulov data) throws Exception {
-        if (data.getId()!=null)
-            try{
-                return tr
-                         .save(data);
-            }catch (Exception ex){
+        if (data.getId() != null)
+            try {
+                return tr.save(data);
+            } catch (Exception ex) {
                 System.out.printf("xatolik: yangilashda muommo bor!");
             }
         throw new Exception("id null ga teng bulmasligi kerak");
@@ -49,11 +48,11 @@ public class TulovServiceImpl implements TulovService {
 
     @Override
     public void delete(Tulov data) {
-
+       tr.delete(data);
     }
 
     @Override
     public void deleteById(Long id) {
-
+       tr.deleteById(id);
     }
 }

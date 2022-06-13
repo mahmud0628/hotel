@@ -4,6 +4,7 @@ package uz.hotel.Controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,9 +27,9 @@ public class XonaController {
     Logger logger= (Logger) LoggerFactory.getLogger(XonaController.class.getName());
 
     @GetMapping()
-    public ResponseEntity<List<Xona>> getAll(Pageable pageable){
+    public ResponseEntity<Page<Xona>> getAll(Pageable pageable){
 
-        return ResponseEntity.ok(xonaService.getAll(pageable).getContent());
+        return ResponseEntity.ok(xonaService.getAll(pageable));
     }
 
     @GetMapping("/{id}")
@@ -65,6 +66,7 @@ public class XonaController {
     public void deleteById(@PathVariable(name = "id") Long id){
         xonaService.deleteById(id);
     }
+    
 
 
 }

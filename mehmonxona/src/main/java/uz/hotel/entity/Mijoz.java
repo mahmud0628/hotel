@@ -1,6 +1,5 @@
 package uz.hotel.entity;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
@@ -24,7 +23,7 @@ public class Mijoz implements Serializable{
     public Mijoz() {
     }
 
-    public Mijoz(Long id, String ism, String familiya, String posportId, String jins, String millati) {
+    public Mijoz(Long id, String ism, String familiya, String pasportId, String jins, String millati) {
         this.id = id;
         this.ism = ism;
         this.familiya = familiya;

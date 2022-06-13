@@ -47,7 +47,7 @@ public class XonaServiceImpl implements XonaService {
 
     @Override
     public void delete(Xona data) {
-    xr.delete(data);
+       xr.delete(data);
     }
 
     @Override

@@ -8,11 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uz.hotel.entity.Bino;
 import uz.hotel.entity.Tulov;
 import uz.hotel.service.TulovService;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin(maxAge = 3600)
@@ -26,9 +23,9 @@ public class TulovController {
     Logger logger= (Logger) LoggerFactory.getLogger(TulovController.class.getName());
 
     @GetMapping()
-    public ResponseEntity<List<Tulov>> getAll(Pageable pageable){
+    public ResponseEntity<Page<Tulov>> getAll(Pageable pageable){
 
-        return ResponseEntity.ok(tulovServicel.getAll(pageable).getContent());
+        return ResponseEntity.ok(tulovServicel.getAll(pageable));
     }
 
     @GetMapping("/{id}")

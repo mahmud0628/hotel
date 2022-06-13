@@ -53,6 +53,6 @@ public class BinoServiceImpl implements BinoService {
 
     @Override
     public void deleteById(Long id) {
-      br.findById(id);
+      br.deleteById(id);
     }
 }

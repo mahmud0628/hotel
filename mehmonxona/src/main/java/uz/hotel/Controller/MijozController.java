@@ -26,8 +26,8 @@ public class MijozController {
     Logger logger= (Logger) LoggerFactory.getLogger(MijozController.class.getName());
 
     @GetMapping()
-    public ResponseEntity<List<Mijoz>>getAll(Pageable pageable){
-        return ResponseEntity.ok(mijozService.getAll(pageable).getContent());
+    public ResponseEntity<Page<Mijoz>>getAll(Pageable pageable){
+        return ResponseEntity.ok(mijozService.getAll(pageable));
     }
 
     @GetMapping("/{id}")

@@ -23,8 +23,8 @@ public class BuyurtmaController {
     Logger logger= (Logger) LoggerFactory.getLogger(BuyurtmaController.class.getName());
 
     @GetMapping()
-    public ResponseEntity<List<Buyurtma>> getAll(Pageable pageable){
-        return ResponseEntity.ok(bs.getAll(pageable).getContent());
+    public ResponseEntity<Page<Buyurtma>> getAll(Pageable pageable){
+        return ResponseEntity.ok(bs.getAll(pageable));
     }
 
     @GetMapping("/{id}")
@@ -61,6 +61,7 @@ public class BuyurtmaController {
     public void deleteById(@PathVariable(name = "id") Long id){
         bs.deleteById(id);
     }
+ 
 
 
 
